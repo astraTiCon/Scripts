@@ -5,11 +5,10 @@
 # ISSUES
 # no spaces destinationName in .config file allowed
 
-# $1 is the first argument
-
 # mkdir $1 # for later
 
-# copy all files and folders as specified in .config file to destination address, and
-# write --verbose output to log.txt
-myvar=$(cat .config)
-cp -rv $myvar ~/Desktop/ > log.txt
+# copy all files and folders specified in .config file to destination address (given by arg),
+# and write --verbose output to log.txt
+while read line; do
+    cp -rv $line ~/Desktop/ > log.txt
+done < ".config"
