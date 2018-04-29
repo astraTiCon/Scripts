@@ -5,11 +5,10 @@
 # logged in 'log.txt'.
 
 #TODO
-# in .config file: maybe comments - #
-# could store files in compressed archive (tar)
+# in .config file: maybe support comments - #
 # check number of args
 
-pwd=$(pwd)
+scriptDirectory=$(pwd)
 folder="backup_"`date '+%d_%m_%Y'`
 logFile=$folder"/log.txt"
 cd $1 # so that tar doesn't include "/home/.../your_folder" in archive
@@ -20,7 +19,7 @@ while read -r line; do
     cp -rv "$line" $folder >> $logFile # $line enclosed in quotes is necessary -> preserves
     # the literal value of all characters within the quotes, with the exception of $, `, \, and, 
     # when history expansion is enabled, !
-done < $pwd"/.config"
+done < $scriptDirectory"/.config"
 
 # #compress backup
 tar -zcf $folder.tar.gz $folder # -z compresses using gzip, -c creates new tar archive
