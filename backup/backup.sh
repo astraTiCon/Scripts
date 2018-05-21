@@ -7,6 +7,7 @@
 #TODO
 # in .config file: maybe support comments - #
 # check number of args
+# echo amount of time taken, as well as size of final archive
 
 scriptDirectory=$(pwd)
 folder="backup_"`date '+%d_%m_%Y'`
