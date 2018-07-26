@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 
 
@@ -10,11 +11,12 @@ int grid[ROWS][COLUMNS];
 void initializeGrid() {
     int p; //likelihood of any one cell coming to life
 
+    srand(time(NULL)); // generate random seed
     for (int row = 0; row < ROWS; row++) {
         for(int col = 0; col < COLUMNS; col++) {
-            p = rand();
-            grid[row][col] = 0; //TODO: randomly insert either 0 or 1
-        }   
+            p = (rand() % 100) < 20; // 20% of cells shall be alive
+            grid[row][col] = p;
+        }
     }
 
 }
